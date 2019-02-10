@@ -1,0 +1,41 @@
+* SpiceNetList
+* 
+* Exported from 1channelAmp.sch at 2/10/2019 1:28 AM
+* 
+* EAGLE Version 9.3.0 Copyright (c) 1988-2019 Autodesk, Inc.
+* 
+.TEMP=25.0
+
+* --------- .OPTIONS ---------
+.OPTIONS ABSTOL=1e-12 GMIN=1e-12 PIVREL=1e-3 ITL1=100 ITL2=50 PIVTOL=1e-13 RELTOL=1e-3 VNTOL=1e-6 RSHUNT=10e9 CHGTOL=1e-15 ITL4=10 METHOD=TRAP SRCSTEPS=0 TRTOL=7 NODE
+
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+R_R2 N_4 N_IN- 47k 
+C_C1 0 N_IN+ 1000pf 
+C_C3 N_IN+ N_IN- 1000pf 
+V_V1 N_3 N_4 DC 0.01 AC 0.01 
+C_C2 N_IN- 0 1000pf 
+R_R1 N_3 N_IN+ 47k 
+
+* --------- simulation ---------
+
+.control
+set filetype=ascii
+AC Lin 500 1 1000 
+write 1channelAmp.sch.sim V(N_IN+) V(N_IN-) I(V_V1)
+.endc
+
+
+.END
+
+
+
+
+
+
+
+
+
+
